@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منظم الحياة</title>
+    <style>
+        /* إعدادات التصميم الأساسية */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        header {
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .tasks {
+            margin-bottom: 2rem;
+        }
+
+        .tasks h2 {
+            border-bottom: 2px solid #4caf50;
+            padding-bottom: 0.5rem;
+        }
+
+        .task {
+            display: flex;
+            justify-content: space-between;
+            background: white;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .task input[type="checkbox"] {
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>منظم الحياة</h1>
+        <p>تنظيم يومك بسهولة وبساطة</p>
+    </header>
+
+    <div class="container">
+        <!-- عرض التاريخ -->
+        <div class="date">
+            <h2>التاريخ</h2>
+            <p>التاريخ الميلادي: <span id="greg-date"></span></p>
+            <p>التاريخ الهجري: <span id="hijri-date"></span></p>
+        </div>
+
+        <!-- المهام اليومية -->
+        <div class="tasks">
+            <h2>المهام اليومية</h2>
+
+            <div>
+                <h3>الصباح</h3>
+                <div class="task">
+                    <label>
+                        <input type="checkbox"> شرب الماء
+                    </label>
+                </div>
+                <div class="task">
+                    <label>
+                        <input type="checkbox"> رياضة صباحية
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <h3>الظهر</h3>
+                <div class="task">
+                    <label>
+                        <input type="checkbox"> مراجعة أهداف اليوم
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <h3>المساء</h3>
+                <div class="task">
+                    <label>
+                        <input type="checkbox"> كتابة يوميات
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // التواريخ الميلادي والهجري
+        const today = new Date();
+        document.getElementById("greg-date").textContent = today.toLocaleDateString('ar-EG');
+
+        function adjustHijriDate() {
+            const hijriMonths = ["محرم", "صفر", "ربيع الأول", "ربيع الآخر", "جمادى الأولى", "جمادى الآخرة", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة"];
+
+            // مثال بسيط - استخدم مكتبة مثل moment.js لإخراج أكثر دقة
+            const approxHijriYear = today.getFullYear() - 622;
+            const approxHijriMonth = hijriMonths[today.getMonth()];
+
+            document.getElementById("hijri-date").textContent = `${approxHijriMonth} ${approxHijriYear}`;
+        }
+
+        adjustHijriDate();
+    </script>
+</body>
+
+</html>
